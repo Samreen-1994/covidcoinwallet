@@ -46,3 +46,6 @@ C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\obj\D
 C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\obj\Debug\CovidBackend.csproj.CopyComplete
 C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\obj\Debug\CovidBackend.dll
 C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\obj\Debug\CovidBackend.pdb
+C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\bin\System.Web.Cors.dll
+C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\bin\System.Web.Http.Cors.dll
+C:\CovidCoinGit\covidcoinwallet\CovidCoinBackend\CovidBackend\CovidBackend\bin\System.Web.Http.Cors.xml

@@ -6,17 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AddDealComponent } from './components/add-deal/add-deal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     LoginComponent,
     NavbarComponent,
     AddUserComponent,
-    AppComponent
+    AppComponent,
+    AddDealComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

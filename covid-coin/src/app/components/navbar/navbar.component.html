@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: Tahoma;">
-    <a class="navbar-brand" href="#">CovidCoin</a>
+    <a class="navbar-brand" href="#">CovidCoin Wallet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
         aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
                     User
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Add User</a>
+                    <a class="dropdown-item" [routerLink]="'/app-home'">Add User</a>
                     <a class="dropdown-item" href="#">Show all Users</a>
                 </div>
             </li>
@@ -32,7 +32,7 @@
                     Deals
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Add Deal</a>
+                    <a class="dropdown-item" [routerLink]="'/add-deal'">Add Deal</a>
                     <a class="dropdown-item" href="#">Deal Center</a>
                     <a class="dropdown-item" href="#">Deal History</a>
                     <a class="dropdown-item" href="#">Buy Deal</a>
