@@ -1,0 +1,37 @@
+create table Users
+(
+Id int,
+Name varchar(255),
+Email varchar(255),
+Username varchar(255),
+Password text,
+Address varchar(255),
+Phone varchar(255),
+IsActive bit,
+CreatedAt DateTime,
+Role int,
+Createdby int,
+Balance float,
+Freeze bit,
+LeverageId int,
+IdentityDocument varchar(255),
+LeverageBalance float
+)
+
+
+CREATE TABLE [dbo].[Deals](
+	[Id] [int] primary key IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](255) NULL,
+	[Description] [varchar](255) NULL,
+	[Price] [float] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[IsActive] [bit] NULL,
+	[CreatedAt] [datetime] NULL,
+	[StartLimit] [float] NULL,
+	[EndLimit] [float] NULL,
+	[Image] [varchar](255) NULL,
+	[ClosingPrice] [float] NULL,
+	[ClosingDate] [datetime] NULL,
+	[ClosingTimeCount] [bigint] NULL
+)

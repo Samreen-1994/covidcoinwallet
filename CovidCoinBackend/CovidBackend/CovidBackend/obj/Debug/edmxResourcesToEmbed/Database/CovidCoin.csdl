@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CovidCoinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BuyDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="SellDealId" Type="Int32" />
+    <Property Name="Purchaseprice" Type="Double" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SellDeal" Relationship="Self.FK_BuyDeal_SellDeal" FromRole="BuyDeal" ToRole="SellDeal" />
+    <NavigationProperty Name="User" Relationship="Self.FK_BuyDeal_User" FromRole="BuyDeal" ToRole="User" />
+  </EntityType>
+  <EntityType Name="BuyDeal1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="SellDealId" Type="Int32" />
+    <Property Name="Purchaseprice" Type="Double" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="StartLimit" Type="Double" />
+    <Property Name="EndLimit" Type="Double" />
+    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserDeals" Relationship="Self.FK_UserDeal_Deal" FromRole="Deal" ToRole="UserDeal" />
+  </EntityType>
+  <EntityType Name="Deal1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="StartLimit" Type="Double" />
+    <Property Name="EndLimit" Type="Double" />
+    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ClosingPrice" Type="Double" />
+    <Property Name="ClosingDate" Type="DateTime" Precision="3" />
+    <Property Name="ClosingTimeCount" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Leverage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="leverages" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Leverage1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="leverages" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SellDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserIDs" Type="Int32" />
+    <Property Name="UserDealId" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="BuyDeals" Relationship="Self.FK_BuyDeal_SellDeal" FromRole="SellDeal" ToRole="BuyDeal" />
+    <NavigationProperty Name="User" Relationship="Self.FK_SellDeal_User" FromRole="SellDeal" ToRole="User" />
+    <NavigationProperty Name="UserDeal" Relationship="Self.FK_SellDeal_UserDeal" FromRole="SellDeal" ToRole="UserDeal" />
+  </EntityType>
+  <EntityType Name="SellDeal1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserIDs" Type="Int32" />
+    <Property Name="UserDealId" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Balance" Type="Int32" />
+    <Property Name="SendUserId" Type="Int32" />
+    <Property Name="ReceiveUserId" Type="Int32" />
+    <Property Name="ApprovedBy" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Transactions_User1" FromRole="Transactions" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_Transactions_User2" FromRole="Transactions" ToRole="User" />
+    <NavigationProperty Name="User2" Relationship="Self.FK_Transactions_User3" FromRole="Transactions" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="Createdby" Type="Int32" />
+    <Property Name="Balance" Type="Double" />
+    <Property Name="Freeze" Type="Int32" />
+    <Property Name="LeverageId" Type="Int32" />
+    <Property Name="IdentityDocument1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdentityDocument2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdentityDocument3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LeverageBalance" Type="Double" />
+    <NavigationProperty Name="BuyDeals" Relationship="Self.FK_BuyDeal_User" FromRole="User" ToRole="BuyDeal" />
+    <NavigationProperty Name="SellDeals" Relationship="Self.FK_SellDeal_User" FromRole="User" ToRole="SellDeal" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_User1" FromRole="User" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions1" Relationship="Self.FK_Transactions_User2" FromRole="User" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions2" Relationship="Self.FK_Transactions_User3" FromRole="User" ToRole="Transactions" />
+    <NavigationProperty Name="UserDeals" Relationship="Self.FK_UserDeal_User" FromRole="User" ToRole="UserDeal" />
+  </EntityType>
+  <EntityType Name="UserDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="DealId" Type="Int32" />
+    <Property Name="Purchase_Price" Type="Double" />
+    <Property Name="Sale_Price" Type="Double" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Shares" Type="Int32" />
+    <NavigationProperty Name="Deal" Relationship="Self.FK_UserDeal_Deal" FromRole="UserDeal" ToRole="Deal" />
+    <NavigationProperty Name="SellDeals" Relationship="Self.FK_SellDeal_UserDeal" FromRole="UserDeal" ToRole="SellDeal" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserDeal_User" FromRole="UserDeal" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserDeal1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="DealId" Type="Int32" />
+    <Property Name="Purchase_Price" Type="Double" />
+    <Property Name="Sale_Price" Type="Double" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Shares" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="Createdby" Type="Int32" />
+    <Property Name="Balance" Type="Double" />
+    <Property Name="Freeze" Type="Int32" />
+    <Property Name="LeverageId" Type="Int32" />
+    <Property Name="IdentityDocument1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdentityDocument2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdentityDocument3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LeverageBalance" Type="Double" />
+  </EntityType>
+  <Association Name="FK_BuyDeal_SellDeal">
+    <End Role="SellDeal" Type="Self.SellDeal" Multiplicity="0..1" />
+    <End Role="BuyDeal" Type="Self.BuyDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SellDeal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuyDeal">
+        <PropertyRef Name="SellDealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuyDeal_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BuyDeal" Type="Self.BuyDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuyDeal">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDeal_Deal">
+    <End Role="Deal" Type="Self.Deal" Multiplicity="0..1" />
+    <End Role="UserDeal" Type="Self.UserDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserDeal">
+        <PropertyRef Name="DealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SellDeal_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="SellDeal" Type="Self.SellDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SellDeal">
+        <PropertyRef Name="UserIDs" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SellDeal_UserDeal">
+    <End Role="UserDeal" Type="Self.UserDeal" Multiplicity="0..1" />
+    <End Role="SellDeal" Type="Self.SellDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDeal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SellDeal">
+        <PropertyRef Name="UserDealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_User1">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="SendUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_User2">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="ReceiveUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_User3">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="ApprovedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDeal_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserDeal" Type="Self.UserDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserDeal">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CovidCoinEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BuyDeals" EntityType="Self.BuyDeal" />
+    <EntitySet Name="BuyDeals1" EntityType="Self.BuyDeal1" />
+    <EntitySet Name="Deals" EntityType="Self.Deal" />
+    <EntitySet Name="Deals1" EntityType="Self.Deal1" />
+    <EntitySet Name="Leverages" EntityType="Self.Leverage" />
+    <EntitySet Name="Leverages1" EntityType="Self.Leverage1" />
+    <EntitySet Name="SellDeals" EntityType="Self.SellDeal" />
+    <EntitySet Name="SellDeals1" EntityType="Self.SellDeal1" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserDeals" EntityType="Self.UserDeal" />
+    <EntitySet Name="UserDeals1" EntityType="Self.UserDeal1" />
+    <EntitySet Name="Users1" EntityType="Self.User1" />
+    <AssociationSet Name="FK_BuyDeal_SellDeal" Association="Self.FK_BuyDeal_SellDeal">
+      <End Role="SellDeal" EntitySet="SellDeals" />
+      <End Role="BuyDeal" EntitySet="BuyDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuyDeal_User" Association="Self.FK_BuyDeal_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="BuyDeal" EntitySet="BuyDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDeal_Deal" Association="Self.FK_UserDeal_Deal">
+      <End Role="Deal" EntitySet="Deals" />
+      <End Role="UserDeal" EntitySet="UserDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SellDeal_User" Association="Self.FK_SellDeal_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SellDeal" EntitySet="SellDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SellDeal_UserDeal" Association="Self.FK_SellDeal_UserDeal">
+      <End Role="UserDeal" EntitySet="UserDeals" />
+      <End Role="SellDeal" EntitySet="SellDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_User1" Association="Self.FK_Transactions_User1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_User2" Association="Self.FK_Transactions_User2">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_User3" Association="Self.FK_Transactions_User3">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDeal_User" Association="Self.FK_UserDeal_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserDeal" EntitySet="UserDeals" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

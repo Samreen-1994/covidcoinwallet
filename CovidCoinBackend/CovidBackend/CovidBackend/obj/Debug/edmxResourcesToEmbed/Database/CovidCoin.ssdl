@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CovidCoinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BuyDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="SellDealId" Type="int" />
+    <Property Name="Purchaseprice" Type="float" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BuyDeals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="SellDealId" Type="int" />
+    <Property Name="Purchaseprice" Type="float" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="Price" Type="float" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="StartLimit" Type="float" />
+    <Property Name="EndLimit" Type="float" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Deals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+    <Property Name="Price" Type="float" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="StartLimit" Type="float" />
+    <Property Name="EndLimit" Type="float" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
+    <Property Name="ClosingPrice" Type="float" />
+    <Property Name="ClosingDate" Type="datetime" />
+    <Property Name="ClosingTimeCount" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Leverage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="leverages" Type="varchar" MaxLength="255" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Leverages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="leverages" Type="varchar" MaxLength="255" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SellDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIDs" Type="int" />
+    <Property Name="UserDealId" Type="int" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="SellDeals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIDs" Type="int" />
+    <Property Name="UserDealId" Type="int" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Balance" Type="int" />
+    <Property Name="SendUserId" Type="int" />
+    <Property Name="ReceiveUserId" Type="int" />
+    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="Username" Type="varchar" MaxLength="255" />
+    <Property Name="Password" Type="text" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="Phone" Type="varchar" MaxLength="255" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Role" Type="int" />
+    <Property Name="Createdby" Type="int" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="Freeze" Type="int" />
+    <Property Name="LeverageId" Type="int" />
+    <Property Name="IdentityDocument1" Type="varchar" MaxLength="255" />
+    <Property Name="IdentityDocument2" Type="varchar" MaxLength="255" />
+    <Property Name="IdentityDocument3" Type="varchar" MaxLength="255" />
+    <Property Name="LeverageBalance" Type="float" />
+  </EntityType>
+  <EntityType Name="UserDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="DealId" Type="int" />
+    <Property Name="Purchase Price" Type="float" />
+    <Property Name="Sale Price" Type="float" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Shares" Type="int" />
+  </EntityType>
+  <EntityType Name="UserDeals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="DealId" Type="int" />
+    <Property Name="Purchase_Price" Type="float" />
+    <Property Name="Sale_Price" Type="float" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Shares" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="Username" Type="varchar" MaxLength="255" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="Phone" Type="varchar" MaxLength="255" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Role" Type="int" />
+    <Property Name="Createdby" Type="int" />
+    <Property Name="Balance" Type="float" />
+    <Property Name="Freeze" Type="int" />
+    <Property Name="LeverageId" Type="int" />
+    <Property Name="IdentityDocument1" Type="varchar" MaxLength="255" />
+    <Property Name="IdentityDocument2" Type="varchar" MaxLength="255" />
+    <Property Name="IdentityDocument3" Type="varchar" MaxLength="255" />
+    <Property Name="LeverageBalance" Type="float" />
+  </EntityType>
+  <Association Name="FK_BuyDeal_SellDeal">
+    <End Role="SellDeal" Type="Self.SellDeal" Multiplicity="0..1" />
+    <End Role="BuyDeal" Type="Self.BuyDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SellDeal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuyDeal">
+        <PropertyRef Name="SellDealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BuyDeal_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BuyDeal" Type="Self.BuyDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuyDeal">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SellDeal_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="SellDeal" Type="Self.SellDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SellDeal">
+        <PropertyRef Name="UserIDs" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SellDeal_UserDeal">
+    <End Role="UserDeal" Type="Self.UserDeal" Multiplicity="0..1" />
+    <End Role="SellDeal" Type="Self.SellDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDeal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SellDeal">
+        <PropertyRef Name="UserDealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_User1">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="SendUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_User2">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="ReceiveUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_User3">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="ApprovedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDeal_Deal">
+    <End Role="Deal" Type="Self.Deal" Multiplicity="0..1" />
+    <End Role="UserDeal" Type="Self.UserDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserDeal">
+        <PropertyRef Name="DealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDeal_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserDeal" Type="Self.UserDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserDeal">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CovidCoinModelStoreContainer">
+    <EntitySet Name="BuyDeal" EntityType="Self.BuyDeal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BuyDeals" EntityType="Self.BuyDeals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deals" EntityType="Self.Deals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Leverage" EntityType="Self.Leverage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Leverages" EntityType="Self.Leverages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SellDeal" EntityType="Self.SellDeal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SellDeals" EntityType="Self.SellDeals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDeal" EntityType="Self.UserDeal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDeals" EntityType="Self.UserDeals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BuyDeal_SellDeal" Association="Self.FK_BuyDeal_SellDeal">
+      <End Role="SellDeal" EntitySet="SellDeal" />
+      <End Role="BuyDeal" EntitySet="BuyDeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuyDeal_User" Association="Self.FK_BuyDeal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BuyDeal" EntitySet="BuyDeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SellDeal_User" Association="Self.FK_SellDeal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="SellDeal" EntitySet="SellDeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SellDeal_UserDeal" Association="Self.FK_SellDeal_UserDeal">
+      <End Role="UserDeal" EntitySet="UserDeal" />
+      <End Role="SellDeal" EntitySet="SellDeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_User1" Association="Self.FK_Transactions_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_User2" Association="Self.FK_Transactions_User2">
+      <End Role="User" EntitySet="User" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_User3" Association="Self.FK_Transactions_User3">
+      <End Role="User" EntitySet="User" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDeal_Deal" Association="Self.FK_UserDeal_Deal">
+      <End Role="Deal" EntitySet="Deal" />
+      <End Role="UserDeal" EntitySet="UserDeal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDeal_User" Association="Self.FK_UserDeal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserDeal" EntitySet="UserDeal" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

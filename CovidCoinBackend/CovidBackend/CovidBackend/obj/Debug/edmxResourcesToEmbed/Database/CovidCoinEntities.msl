@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CovidCoinModelStoreContainer" CdmEntityContainer="CovidCoinEntities1">
+    <EntitySetMapping Name="BuyDeals">
+      <EntityTypeMapping TypeName="CovidCoinModel.BuyDeal">
+        <MappingFragment StoreEntitySet="BuyDeal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SellDealId" ColumnName="SellDealId" />
+          <ScalarProperty Name="Purchaseprice" ColumnName="Purchaseprice" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deals">
+      <EntityTypeMapping TypeName="CovidCoinModel.Deal">
+        <MappingFragment StoreEntitySet="Deal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="StartLimit" ColumnName="StartLimit" />
+          <ScalarProperty Name="EndLimit" ColumnName="EndLimit" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leverages">
+      <EntityTypeMapping TypeName="CovidCoinModel.Leverage">
+        <MappingFragment StoreEntitySet="Leverage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="leverages" ColumnName="leverages" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SellDeals">
+      <EntityTypeMapping TypeName="CovidCoinModel.SellDeal">
+        <MappingFragment StoreEntitySet="SellDeal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserIDs" ColumnName="UserIDs" />
+          <ScalarProperty Name="UserDealId" ColumnName="UserDealId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="CovidCoinModel.Transaction">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="SendUserId" ColumnName="SendUserId" />
+          <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CovidCoinModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Freeze" ColumnName="Freeze" />
+          <ScalarProperty Name="LeverageId" ColumnName="LeverageId" />
+          <ScalarProperty Name="IdentityDocument1" ColumnName="IdentityDocument1" />
+          <ScalarProperty Name="IdentityDocument2" ColumnName="IdentityDocument2" />
+          <ScalarProperty Name="IdentityDocument3" ColumnName="IdentityDocument3" />
+          <ScalarProperty Name="LeverageBalance" ColumnName="LeverageBalance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDeals">
+      <EntityTypeMapping TypeName="CovidCoinModel.UserDeal">
+        <MappingFragment StoreEntitySet="UserDeal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DealId" ColumnName="DealId" />
+          <ScalarProperty Name="Purchase_Price" ColumnName="Purchase Price" />
+          <ScalarProperty Name="Sale_Price" ColumnName="Sale Price" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Shares" ColumnName="Shares" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
