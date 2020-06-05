@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container" style="font-family: Tahoma;font-size: 10px;margin-top: 3%;">
+    <h1>Deal Center</h1>
+    <div class="row">
+        <div class="col-md-3" style="margin-left: 1%;margin-top:1%;" *ngFor="let d of this.deals">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" width="200" height="150" [src]="this.imageBaseUrl+'/Images/'+d.Image"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h6 class="card-title">{{d.Name}}</h6>
+                    <p class="card-text">
+                        {{d.Description}}
+                        <br>
+                        Price : {{d.Price}}
+                        <br>
+
+                    </p>
+                    <button class="btn btn-sm btn-success">Buy</button>
+                    <button class="btn btn-sm btn-info" style="margin-left: 1%;">Sell</button>
+                    <button class="btn btn-sm btn-primary" style="margin-left: 1%;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

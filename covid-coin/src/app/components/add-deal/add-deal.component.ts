@@ -2,6 +2,7 @@ import { UploadService } from './../../services/upload.service';
 import { Component, OnInit } from '@angular/core';
 import { Deal } from 'src/app/models/deal';
 import { DealService } from 'src/app/services/deal.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-deal',
@@ -12,7 +13,7 @@ export class AddDealComponent implements OnInit {
   deal = new Deal();
   dealImage: string;
 
-  constructor(private uploadService: UploadService, private dealService: DealService) { }
+  constructor(private uploadService: UploadService, private dealService: DealService, private toast: ToastrService) { }
 
   ngOnInit() {
   }
@@ -35,10 +36,12 @@ export class AddDealComponent implements OnInit {
     debugger
     this.dealService.addDeal(this.deal).subscribe(
       data => {
-        console.log(data);
+        if (data) {
+          this.toast.success("deal added", "Success");
+        }
       },
       error => {
-        console.log(error);
+        this.toast.error("there was some error in adding deal");
       }
     );
   }

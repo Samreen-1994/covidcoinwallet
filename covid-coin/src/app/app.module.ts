@@ -9,6 +9,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AddDealComponent } from './components/add-deal/add-deal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DealCenterComponent } from './components/deal-center/deal-center.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,22 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     AddUserComponent,
     AppComponent,
-    AddDealComponent
+    AddDealComponent,
+    DealCenterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

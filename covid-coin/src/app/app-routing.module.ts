@@ -1,3 +1,4 @@
+import { DealCenterComponent } from './components/deal-center/deal-center.component';
 import { AddDealComponent } from './components/add-deal/add-deal.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,8 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-home', component: AddUserComponent },
-  { path: 'add-deal', component: AddDealComponent }
+  { path: 'add-deal', component: AddDealComponent },
+  { path: 'deal-center', component: DealCenterComponent }
 ];
 
 @NgModule({

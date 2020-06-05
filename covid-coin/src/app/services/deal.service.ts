@@ -15,4 +15,8 @@ export class DealService {
   addDeal(d: Deal): Observable<any> {
     return this.http.post(this.apiUrl + "/Deal/AddNewDeal", d);
   }
+
+  getDeals(): Observable<any> {
+    return this.http.get(this.apiUrl + "/Deal/GetDeals");
+  }
 }

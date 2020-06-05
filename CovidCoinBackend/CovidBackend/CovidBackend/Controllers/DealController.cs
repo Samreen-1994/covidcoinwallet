@@ -13,5 +13,11 @@ namespace CovidBackend.Controllers
         {
             return Json(new DealService().AddDeal(deal));
         }
+
+        [HttpGet]
+        public IHttpActionResult GetDeals()
+        {
+            return Json(new DealService().GetAllDeals());
+        }
     }
 }

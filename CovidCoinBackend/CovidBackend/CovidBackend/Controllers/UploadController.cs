@@ -22,9 +22,9 @@ namespace CovidBackend.Controllers
                     string FileName = (Path.GetFileName(hpf.FileName));
                     if (!File.Exists(sPath + FileName))
                     {
-                        hpf.SaveAs(sPath + FileName);
-                        return Json(FileName);
+                        hpf.SaveAs(sPath + FileName); 
                     }
+                    return Json(FileName);
                 }
             }
             return Json("Upload Failed");
