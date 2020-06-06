@@ -1,9 +1,12 @@
 <app-navbar></app-navbar>
-<div class="container" style="font-family: Tahoma;font-size: 10px;margin-top: 3%;">
+<div class="container" style="font-family: Tahoma;font-size: 12px;margin-top: 3%;">
     <h1>Deal Center</h1>
+    <p style="color: teal;font-size: 12px;border: 1px solid black;">
+        Deal Center Balance : <b>{{this.userService.loggedInUser.LeverageBalance}}</b>
+    </p>
     <div class="row">
         <div class="col-md-3" style="margin-left: 1%;margin-top:1%;" *ngFor="let d of this.deals">
-            <div class="card" style="width: 18rem;">
+            <div class="card border-primary mb-3" style="width: 18rem;">
                 <img class="card-img-top" width="200" height="150" [src]="this.imageBaseUrl+'/Images/'+d.Image"
                     alt="Card image cap">
                 <div class="card-body">
@@ -11,14 +14,40 @@
                     <p class="card-text">
                         {{d.Description}}
                         <br>
-                        Price : {{d.Price}}
+                        <b>Price</b> : <span style="color: purple;font-weight: bolder;">{{d.Price}}</span>
                         <br>
-
+                        <b>Start Date</b> : {{d.StartDate}}<br>
+                        <b>End Date</b> : {{d.EndDate}}
                     </p>
-                    <button class="btn btn-sm btn-success">Buy</button>
+                    <button class="btn btn-sm btn-success" (click)="show(d)">Buy</button>
                     <button class="btn btn-sm btn-info" style="margin-left: 1%;">Sell</button>
-                    <button class="btn btn-sm btn-primary" style="margin-left: 1%;">Close</button>
+                    <button class="btn btn-sm btn-primary" style="margin-left: 1%;"
+                        (click)="this.closeDeal(d)">Close</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Enter Quantity</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <input type="text" placeholder="Enter Quanity" name="dealQuantity" class="form-control form-control-sm"
+                    [(ngModel)]="this.buyDealQuantity">
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="buyDeal()">Save</button>
             </div>
         </div>
     </div>

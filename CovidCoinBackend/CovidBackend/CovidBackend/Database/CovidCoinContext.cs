@@ -16,5 +16,6 @@ namespace CovidBackend.Database
 
         public DbSet<User> Users { get; set; }
         public DbSet<Deal> Deals { get; set; }
+        public DbSet<UserDeal> UserDeals { get; set; }
     }
 }

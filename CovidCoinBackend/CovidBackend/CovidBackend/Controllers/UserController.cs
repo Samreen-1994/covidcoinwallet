@@ -21,9 +21,16 @@ namespace CovidBackend.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult LoginUser(string name,string password)
+        public IHttpActionResult LoginUser(string name, string password)
         {
-            return Json(new UserService().LoginUser(name,password));
+            return Json(new UserService().LoginUser(name, password));
+        }
+
+        [HttpGet]
+        [ActionName("RefreshLoggedUser")]
+        public IHttpActionResult RefreshLoggedUser(int id)
+        {
+            return Json(new UserService().GetUserById(id));
         }
     }
 }

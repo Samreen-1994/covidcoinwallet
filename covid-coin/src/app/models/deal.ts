@@ -7,10 +7,25 @@ export class Deal {
     EndDate: Date = new Date();
     IsActive: boolean;
     CreatedAt: Date = new Date();
-    StartLimit: Date = new Date();
-    EndLimit: Date = new Date();
+    StartLimit: number;
+    EndLimit: number;
     Image: string;
     ClosingPrice: number;
     ClosingDate: number;
     ClosingTimeCount: number;
+    dealOrignalPrice: number = 0;
+}
+
+export class BuyDealModel {
+    dealId: number;
+    userId: number;
+    dealPrice: number;
+    dealShares: number;
+}
+
+export class CloseDealInput {
+    dealId: number;
+    closingPrice: number;
+    userId: number;
+    dealClosingType: string;
 }

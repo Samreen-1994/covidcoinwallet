@@ -1,3 +1,4 @@
+import { LeverageComponent } from './components/leverage/leverage.component';
 import { DealCenterComponent } from './components/deal-center/deal-center.component';
 import { AddDealComponent } from './components/add-deal/add-deal.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'app-login', component: LoginComponent },
   { path: 'app-home', component: AddUserComponent },
   { path: 'add-deal', component: AddDealComponent },
-  { path: 'deal-center', component: DealCenterComponent }
+  { path: 'deal-center', component: DealCenterComponent },
+  { path: 'app-leverage', component: LeverageComponent }
 ];
 
 @NgModule({

@@ -18,14 +18,14 @@ namespace CovidBackend.Database
         public string Password { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public int Role { get; set; }
-        public int Createdby { get; set; }
-        public float Balance { get; set; }
-        public bool Freeze { get; set; }
-        public int LeverageId { get; set; }
+        public bool? IsActive { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public int? Role { get; set; }
+        public int? Createdby { get; set; }
+        public double? Balance { get; set; }
+        public bool? Freeze { get; set; }
+        public int? LeverageId { get; set; }
         public string IdentityDocument { get; set; }
-        public float LeverageBalance { get; set; }
+        public double? LeverageBalance { get; set; }
     }
 }

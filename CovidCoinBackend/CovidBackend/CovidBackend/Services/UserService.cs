@@ -31,7 +31,15 @@ namespace CovidBackend.Services
         {
             using (CovidCoinContext covidCoinEntities = new CovidCoinContext())
             {
-                return covidCoinEntities.Users.Where(x => x.Username.Equals(userName) && x.Password.Equals(password)).FirstOrDefault();
+                return covidCoinEntities.Users.Where(x => x.Username.Equals(userName) && x.Password.Equals(password) && x.IsActive == true).FirstOrDefault();
+            }
+        }
+
+        public User GetUserById(int userId)
+        {
+            using (CovidCoinContext covidCoinEntities = new CovidCoinContext())
+            {
+                return covidCoinEntities.Users.Where(x => x.Id == userId && x.IsActive == true).FirstOrDefault();
             }
         }
     }

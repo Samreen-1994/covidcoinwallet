@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DealCenterComponent } from './components/deal-center/deal-center.component';
+import { LeverageComponent } from './components/leverage/leverage.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DealCenterComponent } from './components/deal-center/deal-center.compon
     AddUserComponent,
     AppComponent,
     AddDealComponent,
-    DealCenterComponent
+    DealCenterComponent,
+    LeverageComponent
   ],
   imports: [
     BrowserModule,

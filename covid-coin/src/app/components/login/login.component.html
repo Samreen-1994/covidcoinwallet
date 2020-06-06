@@ -9,12 +9,14 @@
                 <div class="card-body">
                     <form action="" autocomplete="off">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                            <input type="text" class="form-control" name="username" placeholder="Enter Username"
+                                [(ngModel)]="this.name">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                            <input type="password" class="form-control" name="password" placeholder="Enter Password"
+                                [(ngModel)]="this.password">
                         </div>
-                        <button type="button" id="sendlogin" class="btn btn-primary">Login</button>
+                        <button type="button" id="sendlogin" class="btn btn-primary" (click)="loginUser()">Login</button>
                     </form>
                 </div>
             </div>

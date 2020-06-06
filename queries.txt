@@ -1,6 +1,6 @@
-create table Users
+create table [dbo].[Users]
 (
-Id int,
+Id int primary key identity(1,1) not null,
 Name varchar(255),
 Email varchar(255),
 Username varchar(255),
@@ -34,4 +34,37 @@ CREATE TABLE [dbo].[Deals](
 	[ClosingPrice] [float] NULL,
 	[ClosingDate] [datetime] NULL,
 	[ClosingTimeCount] [bigint] NULL
+)
+
+
+CREATE TABLE UserDeal
+(
+id int primary key identity(1,1),
+userId int,
+dealId int,
+dealPrice float,
+dealType varchar(255),
+createdAt Datetime,
+dealShares int,
+isActive bit
+)
+
+insert into Users
+(
+Name,
+Username,
+IsActive,
+CreatedAt,
+Role,
+Balance,
+Password
+)
+values (
+'Anubis',
+'Anubis',
+1,
+GETDATE(),
+1,
+1.1,
+'Anubis@12'
 )

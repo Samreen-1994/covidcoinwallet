@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" *ngIf="this.userService.loggedInUser.Role==1">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     User
@@ -16,7 +16,7 @@
                     <a class="dropdown-item" href="#">Show all Users</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" *ngIf="this.userService.loggedInUser.Role==1">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Supervisor
@@ -32,13 +32,19 @@
                     Deals
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="'/add-deal'">Add Deal</a>
+                    <a class="dropdown-item" [routerLink]="'/add-deal'" *ngIf="this.userService.loggedInUser.Role==1">Add Deal</a>
                     <a class="dropdown-item" [routerLink]="'/deal-center'">Deal Center</a>
                     <a class="dropdown-item" href="#">Deal History</a>
                     <a class="dropdown-item" href="#">Buy Deal</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="'/app-leverage'">Leverage</a>
+            </li>
         </ul>
-        <button class="btn btn-secondary btn-sm my-2 my-sm-0" type="submit">Logout</button>
+
+        <span style="color: white;margin-right:2%;">Wallet Balance : {{this.userService.loggedInUser.Balance}}
+            Coins</span>
+        <button class="btn btn-secondary btn-sm my-2 my-sm-0" (click)="logoutUser()">Logout</button>
     </div>
 </nav>
