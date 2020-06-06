@@ -32,5 +32,12 @@ namespace CovidBackend.Controllers
         {
             return Json(new UserService().GetUserById(id));
         }
+
+        [HttpPost]
+        [ActionName("EditUser")]
+        public IHttpActionResult EditUser(User user)
+        {
+            return Json(new UserService().EditUser(user));
+        }
     }
 }

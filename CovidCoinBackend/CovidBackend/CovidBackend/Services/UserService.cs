@@ -27,6 +27,26 @@ namespace CovidBackend.Services
             }
         }
 
+        public User EditUser(User user)
+        {
+            using (CovidCoinContext covid = new CovidCoinContext())
+            {
+                var findUser = covid.Users.Where(x => x.Id == user.Id && x.IsActive == true).FirstOrDefault();
+                findUser.Name = user.Name;
+                findUser.Username = user.Name;
+                findUser.IsActive = user.IsActive;
+                findUser.Password = user.Password;
+                findUser.Balance = user.Balance;
+                findUser.Email = user.Email;
+                findUser.Freeze = user.Freeze;
+                findUser.Phone = user.Phone;
+
+                covid.Entry(findUser).State = EntityState.Modified;
+                covid.SaveChanges();
+                return findUser;
+            }
+        }
+
         public User LoginUser(string userName, string password)
         {
             using (CovidCoinContext covidCoinEntities = new CovidCoinContext())
