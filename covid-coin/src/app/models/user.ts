@@ -15,6 +15,9 @@ export class User {
     LeverageBalance: number;
     Id: number;
     Password: string;
+    Image: string;
+    deleted: boolean = false;
+    isedit:boolean=false;
 }
 
 export class LeverageInput {

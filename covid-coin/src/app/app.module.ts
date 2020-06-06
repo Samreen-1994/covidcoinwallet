@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DealCenterComponent } from './components/deal-center/deal-center.component';
 import { LeverageComponent } from './components/leverage/leverage.component';
+import { ShowUserComponent } from './components/show-user/show-user.component';
+import { AddSupervisorComponent } from './components/add-supervisor/add-supervisor.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LeverageComponent } from './components/leverage/leverage.component';
     AppComponent,
     AddDealComponent,
     DealCenterComponent,
-    LeverageComponent
+    LeverageComponent,
+    ShowUserComponent,
+    AddSupervisorComponent
   ],
   imports: [
     BrowserModule,

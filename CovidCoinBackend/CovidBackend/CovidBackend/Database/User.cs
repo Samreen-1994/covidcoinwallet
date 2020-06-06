@@ -27,5 +27,6 @@ namespace CovidBackend.Database
         public int? LeverageId { get; set; }
         public string IdentityDocument { get; set; }
         public double? LeverageBalance { get; set; }
+        public string Image { get; set; }
     }
 }

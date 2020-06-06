@@ -12,8 +12,8 @@
                     User
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="'/app-home'">Add User</a>
-                    <a class="dropdown-item" href="#">Show all Users</a>
+                    <a class="dropdown-item" [routerLink]="'/add-user'">Add User</a>
+                    <a class="dropdown-item" [routerLink]="'/show-user'">Show all Users</a>
                 </div>
             </li>
             <li class="nav-item dropdown" *ngIf="this.userService.loggedInUser.Role==1">

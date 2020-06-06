@@ -12,6 +12,7 @@ export class UploadService {
   constructor(private http: HttpClient) { }
 
   uploadImage(imageData: any): Observable<any> {
+    debugger
     return this.http.post(this.apiUrl + "/Upload/UploadFiles", imageData);
   }
 }

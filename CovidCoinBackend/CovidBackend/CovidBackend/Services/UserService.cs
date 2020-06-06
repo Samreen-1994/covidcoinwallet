@@ -13,7 +13,7 @@ namespace CovidBackend.Services
         {
             using (CovidCoinContext covidCoinEntities = new CovidCoinContext())
             {
-                return covidCoinEntities.Users.ToList();
+                return covidCoinEntities.Users.Where(x => x.IsActive ==true).ToList();
             }
         }
 
@@ -30,20 +30,31 @@ namespace CovidBackend.Services
         public User EditUser(User user)
         {
             using (CovidCoinContext covid = new CovidCoinContext())
-            {
+            { 
                 var findUser = covid.Users.Where(x => x.Id == user.Id && x.IsActive == true).FirstOrDefault();
-                findUser.Name = user.Name;
-                findUser.Username = user.Name;
-                findUser.IsActive = user.IsActive;
-                findUser.Password = user.Password;
-                findUser.Balance = user.Balance;
-                findUser.Email = user.Email;
-                findUser.Freeze = user.Freeze;
-                findUser.Phone = user.Phone;
-
+                if(user.IsActive == false)
+                {
+                    findUser.IsActive = user.IsActive;
+                }
+                if (user.Freeze == true)
+                {
+                    findUser.Freeze = user.Freeze;
+                }
+                if(user.Freeze !=true && user.IsActive != false)
+                {
+                    findUser.Name = user.Name;
+                    findUser.Username = user.Name;
+                    findUser.IsActive = user.IsActive;
+                    findUser.Password = user.Password;
+                    findUser.Balance = user.Balance;
+                    findUser.Email = user.Email;
+                    findUser.Freeze = user.Freeze;
+                    findUser.Phone = user.Phone;
+                }
                 covid.Entry(findUser).State = EntityState.Modified;
                 covid.SaveChanges();
                 return findUser;
+
             }
         }
 
