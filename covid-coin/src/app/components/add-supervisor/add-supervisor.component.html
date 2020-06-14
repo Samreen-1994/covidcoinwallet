@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container" style="margin-top: 3%;font-family: Calibri;">
+    <div class="form">
+        <div class="note">
+            <h3>Add Supervisor</h3>
+        </div>
+
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username *" value=""
+                            [(ngModel)]="this.supervisor.Username" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Supervisor Email *" value=""
+                            [(ngModel)]="this.supervisor.Email" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password *" value=""
+                            [(ngModel)]="this.supervisor.Password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Phone *" value=""
+                            [(ngModel)]="this.supervisor.Phone" />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Address *" value=""
+                            [(ngModel)]="this.supervisor.Address"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btnSubmit" class="btn btn-sm btn-primary" (click)="createSupervisor()"
+                *ngIf="!this.isEdit">Create
+                Supervisor</button>
+            <button type="button" class="btnSubmit" class="btn btn-sm btn-primary" (click)="editSupervisor()"
+                *ngIf="this.isEdit">Update Supervisor</button>
+        </div>
+    </div>
+</div>

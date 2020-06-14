@@ -10,10 +10,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/CovidBackend.dll">
-      <publishTime>06/06/2020 11:54:27</publishTime>
+      <publishTime>06/08/2020 16:58:02</publishTime>
     </File>
     <File Include="bin/CovidBackend.pdb">
-      <publishTime>06/06/2020 11:54:27</publishTime>
+      <publishTime>06/08/2020 16:58:02</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/07/2018 11:03:48</publishTime>
@@ -127,7 +127,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2020 22:02:35</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/06/2020 11:54:28</publishTime>
+      <publishTime>06/06/2020 23:33:38</publishTime>
     </File>
   </ItemGroup>
 </Project>

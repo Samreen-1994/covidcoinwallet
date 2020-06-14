@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { UserService } from './../../services/user.service';
 import { BuyDealModel, CloseDealInput } from './../../models/deal';
 import { Observable, timer } from 'rxjs';
@@ -17,16 +18,24 @@ export class DealCenterComponent implements OnInit, OnChanges {
   imageBaseUrl = "";
 
   currTime: number;
-  obsTimer: Observable<number> = timer(2000, 2000);
+  obsTimer: Observable<number> = timer(1000, 1000);
 
   selectedDeal = new Deal();
   buyDealQuantity: number = 0;
 
   buyDealModel = new BuyDealModel();
 
+  loggedUser: User;
+
   constructor(private dealService: DealService, private toast: ToastrService, public userService: UserService) { }
 
+  randomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
   ngOnInit() {
+    debugger
+    this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
     this.imageBaseUrl = environment.imageBaseUrl;
     this.fetchAllDeals();
 
@@ -40,7 +49,8 @@ export class DealCenterComponent implements OnInit, OnChanges {
 
         let randomStart = d.StartLimit;
         let randomEnd = d.EndLimit;
-        let randomPrice = (Math.floor(Math.random() * randomEnd) + randomStart) * d.dealOrignalPrice;
+        let randomPrice = this.randomNumber(randomStart, randomEnd);
+        randomPrice = randomPrice * d.dealOrignalPrice;
         if (randomPrice != 0.00) {
           d.Price = randomPrice;
         }
@@ -49,8 +59,11 @@ export class DealCenterComponent implements OnInit, OnChanges {
     });
   }
 
+
+
+
   fetchAllDeals() {
-    this.dealService.getDeals().subscribe(
+    this.dealService.getDeals(this.loggedUser.Id).subscribe(
       data => {
         this.deals = data;
       },
@@ -61,30 +74,43 @@ export class DealCenterComponent implements OnInit, OnChanges {
   }
 
   buyDeal() {
+    debugger
     this.buyDealModel.dealId = this.selectedDeal.Id;
-    this.buyDealModel.userId = 1;
+    this.buyDealModel.userId = this.loggedUser.Id;
     this.buyDealModel.dealShares = this.buyDealQuantity;
-    this.buyDealModel.dealPrice = parseFloat(this.selectedDeal.Price.toFixed(2));
+    this.buyDealModel.dealPrice = this.selectedDeal.Price;
 
-    this.dealService.buyDeal(this.buyDealModel).subscribe(
-      data => {
-        this.toast.success("deal bought");
-      },
-      error => {
-        this.toast.error("error");
-      }
-    );
+    var dealLeverage = this.selectedDeal.Price * this.buyDealQuantity;
+    if (this.loggedUser.LeverageBalance < dealLeverage) {
+      this.toast.warning("deal cannot be bought as you dont have enough deal balance");
+    }
+    else {
+      this.loggedUser.LeverageBalance = this.loggedUser.LeverageBalance - this.selectedDeal.Price * this.buyDealQuantity;
+      this.dealService.buyDeal(this.buyDealModel).subscribe(
+        data => {
+          if (data == true) {
+            this.toast.success("deal opened and bought");
+            this.fetchAllDeals();
+          }
+          else {
+            this.toast.warning('deal already opened');
+          }
+        },
+        error => {
+          this.toast.error("error");
+        }
+      );
 
+    }
     this.hide();
   }
 
   showModal: boolean;
-  //Bootstrap Modal Open event
   show(d) {
     this.selectedDeal = d;
-    this.showModal = true; // Show-Hide Modal Check
+    this.showModal = true;
   }
-  //Bootstrap Modal Close event
+
   hide() {
     this.showModal = false;
   }
@@ -95,13 +121,16 @@ export class DealCenterComponent implements OnInit, OnChanges {
     var closeDealInput = new CloseDealInput();
     closeDealInput.dealId = d.Id;
     closeDealInput.closingPrice = d.Price;
-    closeDealInput.userId = this.userService.loggedInUser.Id;
+    closeDealInput.userId = this.loggedUser.Id;
 
     this.dealService.closeDeal(closeDealInput).subscribe(
       data => {
         if (data) {
+          debugger
           this.toast.success("deal closed");
           this.userService.refreshUserDetails();
+          this.fetchAllDeals();
+          this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
         }
         else {
           this.toast.error("error in closing deal");

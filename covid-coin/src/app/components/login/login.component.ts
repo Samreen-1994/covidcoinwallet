@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.name, this.password).subscribe(
       data => {
         if (data) {
-          this.userService.loggedInUser = data;
-          if (this.userService.loggedInUser.Role == 1) {
+          sessionStorage.setItem('user', JSON.stringify(data));
+          let user = JSON.parse(sessionStorage.getItem('user'));
+          if (user.Role == 1) {
             this.router.navigateByUrl('/app-home');
           }
           else {

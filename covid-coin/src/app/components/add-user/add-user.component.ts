@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UploadService } from './../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -12,10 +13,32 @@ import { User } from 'src/app/models/user';
 export class AddUserComponent implements OnInit {
   user = new User();
   userAccountImage: string;
+  isEdit: boolean = false;
 
-  constructor(private userService: UserService, private toast: ToastrService , private UploadService: UploadService) { }
+  constructor(private userService: UserService, private toast: ToastrService, private UploadService: UploadService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    debugger
+    let id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.getUserById(parseInt(id));
+      this.isEdit = true;
+    }
+    else {
+      this.user = new User();
+      this.isEdit = false;
+    }
+  }
+
+  getUserById(id: number) {
+    this.userService.findUserById(id).subscribe(
+      data => {
+        this.user = data;
+      },
+      error => {
+        this.toast.error('there was some error while fetching supervisor');
+      }
+    );
   }
 
   uploadFiles(e) {
@@ -40,6 +63,9 @@ export class AddUserComponent implements OnInit {
         if (data) {
           this.toast.success("Account created", "Success");
         }
+        else {
+          this.toast.warning('User having same Username,Email,Phone or Address already exists');
+        }
       },
       error => {
         this.toast.error("There was some error in creating account");
@@ -47,4 +73,14 @@ export class AddUserComponent implements OnInit {
     );
   }
 
+  editUser() {
+    this.userService.editUser(this.user).subscribe(
+      data => {
+        this.toast.success('user updated');
+      },
+      error => {
+        this.toast.error('there was an error in freezing supervisor');
+      }
+    );
+  }
 }

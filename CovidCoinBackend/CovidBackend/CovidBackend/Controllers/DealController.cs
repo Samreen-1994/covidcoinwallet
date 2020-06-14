@@ -18,9 +18,9 @@ namespace CovidBackend.Controllers
 
         [HttpGet]
         [ActionName("GetDeals")]
-        public IHttpActionResult GetDeals()
+        public IHttpActionResult GetDeals(int userId)
         {
-            return Json(new DealService().GetAllDeals());
+            return Json(new DealService().GetAllDeals(userId));
         }
 
         [HttpPost]

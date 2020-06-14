@@ -1,3 +1,5 @@
+import { ShowSupervisorsComponent } from './components/show-supervisors/show-supervisors.component';
+import { AddSupervisorComponent } from './components/add-supervisor/add-supervisor.component';
 import { LeverageComponent } from './components/leverage/leverage.component';
 import { DealCenterComponent } from './components/deal-center/deal-center.component';
 import { AddDealComponent } from './components/add-deal/add-deal.component';
@@ -15,9 +17,12 @@ const routes: Routes = [
   { path: 'add-deal', component: AddDealComponent },
   { path: 'deal-center', component: DealCenterComponent },
   { path: 'app-leverage', component: LeverageComponent },
-  { path: 'app-leverage', component: LeverageComponent },
   { path: 'add-user', component: AddUserComponent },
   { path: 'show-user', component: ShowUserComponent },
+  { path: 'add-supervisor', component: AddSupervisorComponent },
+  { path: 'show-supervisor', component: ShowSupervisorsComponent },
+  { path: 'edit-supervisor/:id', component: AddSupervisorComponent },
+  { path: 'edit-user/:id', component: AddUserComponent }
 ];
 
 @NgModule({

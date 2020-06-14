@@ -14,6 +14,7 @@ export class Deal {
     ClosingDate: number;
     ClosingTimeCount: number;
     dealOrignalPrice: number = 0;
+    isDealBought: boolean = false;
 }
 
 export class BuyDealModel {

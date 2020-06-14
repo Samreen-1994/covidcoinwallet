@@ -17,8 +17,9 @@ export class DealService {
     return this.http.post(this.apiUrl + "/Deal/AddNewDeal", d);
   }
 
-  getDeals(): Observable<any> {
-    return this.http.get(this.apiUrl + "/Deal/GetDeals");
+  getDeals(id: number): Observable<any> {
+    debugger
+    return this.http.get(this.apiUrl + "/Deal/GetDeals?userId=" + id);
   }
 
   buyDeal(buyDeal: BuyDealModel): Observable<any> {

@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,12 +11,13 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   constructor(public userService: UserService, private router: Router) { }
-
+  loggedUser: User;
   ngOnInit() {
+    this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
   }
 
   logoutUser() {
-    this.userService.loggedInUser = null;
+    sessionStorage.clear();
     this.router.navigateByUrl('app-login');
   }
 }

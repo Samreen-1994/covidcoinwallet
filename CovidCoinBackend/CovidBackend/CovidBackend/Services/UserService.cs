@@ -13,7 +13,7 @@ namespace CovidBackend.Services
         {
             using (CovidCoinContext covidCoinEntities = new CovidCoinContext())
             {
-                return covidCoinEntities.Users.Where(x => x.IsActive ==true).ToList();
+                return covidCoinEntities.Users.Where(x => x.IsActive == true).ToList();
             }
         }
 
@@ -21,36 +21,52 @@ namespace CovidBackend.Services
         {
             using (CovidCoinContext covidCoinEntities = new CovidCoinContext())
             {
-                covidCoinEntities.Users.Add(user);
-                covidCoinEntities.SaveChanges();
-                return true;
+                var getCurrentUser = covidCoinEntities.Users.Where(x => x.Role == 2 &&
+                (x.Username.Equals(user.Username) || x.Email.Equals(user.Email) || x.Phone == user.Phone || x.Address.Equals(user.Address))
+                && x.IsActive == true).FirstOrDefault();
+
+
+                if (getCurrentUser != null)
+                {
+                    return false;
+                }
+                else
+                {
+                    covidCoinEntities.Users.Add(user);
+                    covidCoinEntities.SaveChanges();
+                    return true;
+                }
             }
         }
 
         public User EditUser(User user)
         {
             using (CovidCoinContext covid = new CovidCoinContext())
-            { 
+            {
                 var findUser = covid.Users.Where(x => x.Id == user.Id && x.IsActive == true).FirstOrDefault();
-                if(user.IsActive == false)
+                if (user.IsActive == false)
                 {
-                    findUser.IsActive = user.IsActive;
+                    findUser.IsActive = false;
                 }
                 if (user.Freeze == true)
                 {
-                    findUser.Freeze = user.Freeze;
+                    findUser.Freeze = true;
                 }
-                if(user.Freeze !=true && user.IsActive != false)
+                else
+                {
+                    findUser.Freeze = false;
+                }
+
+                if (user.IsActive == true && user.Freeze == false)
                 {
                     findUser.Name = user.Name;
-                    findUser.Username = user.Name;
-                    findUser.IsActive = user.IsActive;
+                    findUser.Username = user.Username;
                     findUser.Password = user.Password;
                     findUser.Balance = user.Balance;
                     findUser.Email = user.Email;
-                    findUser.Freeze = user.Freeze;
                     findUser.Phone = user.Phone;
                 }
+
                 covid.Entry(findUser).State = EntityState.Modified;
                 covid.SaveChanges();
                 return findUser;

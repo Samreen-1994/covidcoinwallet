@@ -33,17 +33,21 @@ export class AddDealComponent implements OnInit {
   }
 
   saveDeal() {
-    debugger
-    this.dealService.addDeal(this.deal).subscribe(
-      data => {
-        if (data) {
-          this.toast.success("deal added", "Success");
+    if ((!this.deal.Price || this.deal.Price < 0) || (!this.deal.StartLimit || this.deal.Price < 0) || (!this.deal.EndLimit || this.deal.Price < 0)) {
+      this.toast.error('deal price and randomizer values should be greater than 0');
+      return false;
+    }
+    else {
+      this.dealService.addDeal(this.deal).subscribe(
+        data => {
+          if (data) {
+            this.toast.success("deal added", "Success");
+          }
+        },
+        error => {
+          this.toast.error("there was some error in adding deal");
         }
-      },
-      error => {
-        this.toast.error("there was some error in adding deal");
-      }
-    );
+      );
+    }
   }
-
 }

@@ -22,7 +22,7 @@ namespace CovidBackend.Models
     public class CloseDealInput
     {
         public int dealId { get; set; }
-        public int closingPrice { get; set; }
+        public double closingPrice { get; set; }
         public int userId { get; set; }
         public string dealClosingType { get; set; }
     }

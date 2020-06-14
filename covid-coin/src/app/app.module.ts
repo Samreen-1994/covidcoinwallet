@@ -1,3 +1,4 @@
+import { ShowUserComponent } from './components/show-user/show-user.component';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,8 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DealCenterComponent } from './components/deal-center/deal-center.component';
 import { LeverageComponent } from './components/leverage/leverage.component';
-import { ShowUserComponent } from './components/show-user/show-user.component';
 import { AddSupervisorComponent } from './components/add-supervisor/add-supervisor.component';
+import { ShowSupervisorsComponent } from './components/show-supervisors/show-supervisors.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddSupervisorComponent } from './components/add-supervisor/add-supervis
     DealCenterComponent,
     LeverageComponent,
     ShowUserComponent,
-    AddSupervisorComponent
+    AddSupervisorComponent,
+    ShowSupervisorsComponent
   ],
   imports: [
     BrowserModule,

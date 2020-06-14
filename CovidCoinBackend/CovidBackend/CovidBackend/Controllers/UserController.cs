@@ -9,12 +9,14 @@ namespace CovidBackend.Controllers
     public class UserController : ApiController
     {
         [HttpPost]
+        [ActionName("AddUser")]
         public IHttpActionResult AddUser(User u)
         {
             return Json(new UserService().AddUser(u));
         }
 
         [HttpGet]
+        [ActionName("GetUsers")]
         public IHttpActionResult GetUsers()
         {
             return Json(new UserService().GetAllUser());
@@ -24,6 +26,13 @@ namespace CovidBackend.Controllers
         public IHttpActionResult LoginUser(string name, string password)
         {
             return Json(new UserService().LoginUser(name, password));
+        }
+
+        [HttpGet]
+        [ActionName("FindUserById")]
+        public IHttpActionResult FindUserById(int id)
+        {
+            return Json(new UserService().GetUserById(id));
         }
 
         [HttpGet]

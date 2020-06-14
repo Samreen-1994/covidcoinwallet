@@ -18,9 +18,11 @@ export class UserService {
   }
 
   refreshUserDetails(): void {
-    this.http.get<any>(this.apiUrl + "/User/RefreshLoggedUser?id=" + this.loggedInUser.Id).subscribe(
+    var loggedUser = JSON.parse(sessionStorage.getItem('user'));
+    this.http.get<any>(this.apiUrl + "/User/RefreshLoggedUser?id=" + loggedUser.Id).subscribe(
       data => {
         this.loggedInUser = data;
+        sessionStorage.setItem('user', JSON.stringify(this.loggedInUser));
       },
       error => {
         console.log(error);
@@ -37,17 +39,30 @@ export class UserService {
   }
 
   addUser(u: User): Observable<any> {
-    debugger
     return this.http.post(this.apiUrl + "/User/AddUser", u);
   }
 
   getAllUser(): Observable<any> {
-    debugger;
     return this.http.get(this.apiUrl + "/User/GetUsers");
   }
 
   editUser(user: User): Observable<any> {
-    debugger;
     return this.http.post(this.apiUrl + "/User/EditUser", user);
   }
+  addSupervisor(user: User): Observable<any> {
+    return this.http.post(this.apiUrl + "/User/AddUser", user);
+  }
+
+  fetchSupervisors(): Observable<any> {
+    return this.http.get(this.apiUrl + "/User/GetUsers");
+  }
+
+  editSupervisor(sp: User) {
+    return this.http.post(this.apiUrl + "/User/EditUser", sp);
+  }
+
+  findUserById(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + "/User/FindUserById?id=" + id);
+  }
+
 }

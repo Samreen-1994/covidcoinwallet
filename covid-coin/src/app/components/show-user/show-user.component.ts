@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-user',
@@ -9,18 +10,19 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./show-user.component.css']
 })
 export class ShowUserComponent implements OnInit {
-  user= new Array<User>();
+  user = new Array<User>();
 
-constructor(private userService: UserService, private toast: ToastrService ) { }
+  constructor(private userService: UserService, private toast: ToastrService, private router: Router) { }
 
   ngOnInit() {
-    this.getAllUsers(); 
+    this.getAllUsers();
   }
 
   getAllUsers(): void {
     this.userService.getAllUser().subscribe(
       res => {
         this.user = res;
+        this.user = this.user.filter(x => x.Role == 2);
       },
       err => {
         this.toast.error('Everything is broken');
@@ -28,13 +30,10 @@ constructor(private userService: UserService, private toast: ToastrService ) { }
     )
   }
   deleteUser(u: User): void {
-    var user = new User();
-    user.Id = u.Id;
-    user.IsActive = false;
-
-    this.userService.editUser(user).subscribe(
+    u.IsActive = false;
+    this.userService.editUser(u).subscribe(
       res => {
-        if (res == true) {
+        if (res) {
           this.toast.success('Deleted');
           this.getAllUsers();
         }
@@ -48,14 +47,29 @@ constructor(private userService: UserService, private toast: ToastrService ) { }
     );
   }
 
-  freezeUser(u: User): void {
-    var user = new User();
-    user.Id = u.Id;
-    user.Freeze = false;
-
-    this.userService.editUser(user).subscribe(
+  unfreezeUser(u: User) {
+    u.Freeze = false;
+    this.userService.editUser(u).subscribe(
       res => {
-        if (res == true) {
+        if (res) {
+          this.toast.success('User Unfreezed');
+          this.getAllUsers();
+        }
+        else {
+          this.toast.error('There was some error in unfreezing user');
+        }
+      },
+      err => {
+        this.toast.error('Everything is wrong');
+      }
+    );
+  }
+
+  freezeUser(u: User): void {
+    u.Freeze = true;
+    this.userService.editUser(u).subscribe(
+      res => {
+        if (res) {
           this.toast.success('User Freezed');
           this.getAllUsers();
         }
@@ -70,25 +84,6 @@ constructor(private userService: UserService, private toast: ToastrService ) { }
   }
 
   updateUser(u: User): void {
-    this.userService.editUser(u).subscribe(
-      res => {
-        if (res == true) {
-          this.toast.success('Successfully edit');
-          this.getAllUsers();
-          u.isedit = false;
-        }
-        else {
-          this.toast.error('There was some error in deletion');
-        }
-
-      },
-      err => {
-        this.toast.error('Everything is wrong');
-      }
-    );
+    this.router.navigate(['/edit-user', u.Id]);
   }
-
-
-
-
 }

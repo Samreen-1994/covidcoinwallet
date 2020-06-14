@@ -25,5 +25,7 @@ namespace CovidBackend.Database
         public double ClosingPrice { get; set; }
         public DateTime? ClosingDate { get; set; }
         public long? ClosingTimeCount { get; set; }
+        [NotMapped]
+        public bool isDealBought { get; set; }
     }
 }
