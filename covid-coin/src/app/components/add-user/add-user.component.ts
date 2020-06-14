@@ -18,7 +18,6 @@ export class AddUserComponent implements OnInit {
   constructor(private userService: UserService, private toast: ToastrService, private UploadService: UploadService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    debugger
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.getUserById(parseInt(id));

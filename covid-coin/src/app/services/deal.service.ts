@@ -18,7 +18,6 @@ export class DealService {
   }
 
   getDeals(id: number): Observable<any> {
-    debugger
     return this.http.get(this.apiUrl + "/Deal/GetDeals?userId=" + id);
   }
 

@@ -18,7 +18,6 @@ export class AddSupervisorComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.getSupervisorById(parseInt(id));

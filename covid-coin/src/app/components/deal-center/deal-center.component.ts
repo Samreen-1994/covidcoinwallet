@@ -34,7 +34,6 @@ export class DealCenterComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    debugger
     this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
     this.imageBaseUrl = environment.imageBaseUrl;
     this.fetchAllDeals();
@@ -74,7 +73,6 @@ export class DealCenterComponent implements OnInit, OnChanges {
   }
 
   buyDeal() {
-    debugger
     this.buyDealModel.dealId = this.selectedDeal.Id;
     this.buyDealModel.userId = this.loggedUser.Id;
     this.buyDealModel.dealShares = this.buyDealQuantity;
@@ -117,7 +115,6 @@ export class DealCenterComponent implements OnInit, OnChanges {
 
 
   closeDeal(d: Deal) {
-    debugger
     var closeDealInput = new CloseDealInput();
     closeDealInput.dealId = d.Id;
     closeDealInput.closingPrice = d.Price;
@@ -126,7 +123,6 @@ export class DealCenterComponent implements OnInit, OnChanges {
     this.dealService.closeDeal(closeDealInput).subscribe(
       data => {
         if (data) {
-          debugger
           this.toast.success("deal closed");
           this.userService.refreshUserDetails();
           this.fetchAllDeals();
