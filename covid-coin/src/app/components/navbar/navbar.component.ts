@@ -13,11 +13,26 @@ export class NavbarComponent implements OnInit {
   constructor(public userService: UserService, private router: Router) { }
   loggedUser: User;
   ngOnInit() {
+  
     this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
+    this.userService.sidebarVisibilityChange.subscribe(
+      data => {
+        debugger;
+        if (data) {
+          this.loggedUser=data;
+          console.log(data);
+          //this.toast.success("Leverage Updated");
+          //this.userService.refreshUserDetails();
+        }
+      }
+    )
+
   }
 
   logoutUser() {
     sessionStorage.clear();
     this.router.navigateByUrl('app-login');
   }
+
+
 }

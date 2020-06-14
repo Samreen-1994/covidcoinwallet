@@ -19,6 +19,13 @@ namespace CovidBackend.Controllers
         {
             return Json(new LeverageService().UpdateLeverage(leverageInput.leverageId, leverageInput.userId));
         }
+
+        [HttpGet]
+        [ActionName("CheckLeverageCount")]
+        public IHttpActionResult CheckCountLeverage(int userId)
+        {
+            return Json(new LeverageService().CheckCountLeverage(userId));
+        }
     }
 
     

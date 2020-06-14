@@ -115,6 +115,7 @@ export class DealCenterComponent implements OnInit, OnChanges {
 
 
   closeDeal(d: Deal) {
+    debugger
     var closeDealInput = new CloseDealInput();
     closeDealInput.dealId = d.Id;
     closeDealInput.closingPrice = d.Price;
@@ -127,6 +128,8 @@ export class DealCenterComponent implements OnInit, OnChanges {
           this.userService.refreshUserDetails();
           this.fetchAllDeals();
           this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
+          this.userService.loggedInUser = this.loggedUser;
+          this.userService.updateNavigationBarWallet();
         }
         else {
           this.toast.error("error in closing deal");

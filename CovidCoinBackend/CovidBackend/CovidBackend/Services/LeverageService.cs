@@ -34,5 +34,22 @@ namespace CovidBackend.Services
                 return true;
             }
         }
+
+
+        public int CheckCountLeverage(int userId)
+        {
+            using (CovidCoinContext c = new CovidCoinContext())
+            {
+                var findUser = c.UserDeals.Where(u => u.userId == userId && u.dealType.Equals("buy") && u.isActive == true).FirstOrDefault();
+                if (findUser != null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
